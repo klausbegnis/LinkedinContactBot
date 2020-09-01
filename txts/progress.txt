@@ -1,0 +1,1 @@
+nome,linkedin,trabalho,endereco,email,telefone
