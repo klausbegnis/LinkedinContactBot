@@ -54,9 +54,20 @@ class ApiSheets():
         nomes_df = pd.DataFrame(data[1:], columns=data[0])
         nomes = nomes_df['Nome'].tolist()
         permissao = nomes_df['Permissão'].tolist()
-        links = nomes_df['Link'].tolist()
+        links = nomes_df['Linkedin'].tolist()
+
+        #destructing para nomes permitidos
+
         nomes_permitidos = [nome for nome in nomes if permissao[nomes.index(nome)] == "Sim"]
-        links_permitidos = [link for link in links if permissao[link.index(link) == "Sim"]]
+
+        #destructing nao funcionou pra retirar links permitdos criei for loop comum
+
+        links_permitidos = []
+        for i in range(len(permissao)):
+            permit = permissao[i]
+            if permit == "Sim":
+                links_permitidos.append(links[i])
+
         columns = ['nomes', 'links']
         data = {
             'nomes' : nomes_permitidos,
@@ -68,8 +79,9 @@ class ApiSheets():
         print("Nomes salvos")
         print('')
 
+
 if __name__ == '__main__':
     scopes = ['https://www.googleapis.com/auth/spreadsheets.readonly']  # do not change this
     spreadsheet_id = ''  # url id from google sheets data
-    range_name = 'Nomes!A:C'  # columns to retrieve data
+    range_name = 'banco!A:G'  # columns to retrieve data
     api = ApiSheets(SCOPES=scopes, SPREADSHEET_ID=spreadsheet_id, RANGE_NAME=range_name)
