@@ -14,12 +14,27 @@ class Excel():
             api = ApiSheets(SCOPES=self.scopes, SPREADSHEET_ID=self.spreadsheet_id, RANGE_NAME=self.range_name)
             data = api.pull_sheet_data()
             nomes_df = pd.DataFrame(data[1:], columns=data[0])
-            self.nomes_g = nomes_df['Nome'].tolist()
-            self.linkss_g = nomes_df['Linkedin'].tolist()
-            self.telefones_g = nomes_df['Telefone'].tolist()
-            self.emails_g = nomes_df['Email'].tolist()
-            self.enderecos_g = nomes_df['Endereço'].tolist()
-            self.trabalhos_g = nomes_df['Trabalho'].tolist()
+            self.permissao_g = nomes_df['Permissão'].tolist()
+            self.nomes_g1 = nomes_df['Nome'].tolist()
+            self.linkss_g1 = nomes_df['Linkedin'].tolist()
+            self.telefones_g1 = nomes_df['Telefone'].tolist()
+            self.emails_g1 = nomes_df['Email'].tolist()
+            self.enderecos_g1 = nomes_df['Endereço'].tolist()
+            self.trabalhos_g1 = nomes_df['Trabalho'].tolist()
+            self.nomes_g = []
+            self.linkss_g = []
+            self.telefones_g = []
+            self.emails_g = []
+            self.enderecos_g = []
+            self.trabalhos_g = []
+            for i in range(len(self.permissao_g)):
+                if self.permissao_g[i] == 'Sim':
+                    self.nomes_g.append(self.nomes_g1[i])
+                    self.linkss_g.append(self.linkss_g1[i])
+                    self.telefones_g.append(self.telefones_g1[i])
+                    self.emails_g.append(self.emails_g1[i])
+                    self.enderecos_g.append(self.enderecos_g1[i])
+                    self.trabalhos_g.append(self.trabalhos_g1[i])
             self.state = 1
         except:
             self.state = 2
@@ -58,6 +73,14 @@ class Excel():
                 worksheet.write(f'{coluna_letra}1', f'{coluna_var}', config_titulo)
 
         if self.state == 1:
+            """ print(self.enderecos)
+            print(self.enderecos_g)
+            for i in range(len(self.enderecos)):
+                eg = self.enderecos_g[i]
+                e = self.enderecos[i]
+                if e != eg:
+                    print(e, eg) """
+
 
             def faz_linha(dados, letra, tipo):
                 tipo = tipo
@@ -182,5 +205,3 @@ class Excel():
         faz_linha(self.trabalhos, 'f', 'trabalho')
 
         workbook.close()
-
-        
