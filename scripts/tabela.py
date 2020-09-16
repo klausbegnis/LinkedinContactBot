@@ -82,104 +82,38 @@ class Excel():
                     print(e, eg) """
 
 
-            def faz_linha(dados, letra, tipo):
+            def faz_linha(dados, letra, tipo, comparacao):
                 tipo = tipo
                 letra_up = str(letra).upper()
                 for i in range(len(dados)):
 
                     dado = dados[i]
-                    tg = self.telefones_g[i]
-                    eg = self.emails_g[i]
-                    e_g = self.enderecos_g[i]
-                    t_g = self.trabalhos_g[i]
+                    compara = comparacao[i]
 
                     if i == 0:
                         if tipo != 0:
-
-                            if tipo == 'telefone':
-                                if dado == tg:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-                            
-                            if tipo == 'email':
-                                if dado == eg:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                            if tipo == 'endereco':
-                                if dado == e_g:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                            if tipo == 'trabalho':
-                                if dado == t_g:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
+                            if dado == compara:
+                                worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
+                            else:
+                                worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
                         else:
                             worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
 
                     if (i % 2) == 0:
                         if i != 0:
                             if tipo != 0:
-                                
-                                if tipo == 'telefone':
-                                    if dado == tg:
+                                    if dado == compara:
                                         worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
                                     else:
                                         worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-                                
-                                if tipo == 'email':
-                                    if dado == eg:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                    else:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                                if tipo == 'endereco':
-                                    if dado == e_g:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                    else:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                                if tipo == 'trabalho':
-                                    if dado == t_g:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                    else:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
                             else:
                                 worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
                     else:
                         if tipo != 0:
-
-                            if tipo == 'telefone':
-                                if dado == tg:
+                                if dado == compara:
                                     worksheet.write(f'{letra_up}{i + 2}', f'{dado}', cinza)
                                 else:
                                     worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-                                
-                            if tipo == 'email':
-                                if dado == eg:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', cinza)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                            if tipo == 'endereco':
-                                if dado == e_g:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', cinza)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
-                            if tipo == 'trabalho':
-                                if dado == t_g:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', cinza)
-                                else:
-                                    worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-
                         else:
                             worksheet.write(f'{letra_up}{i + 2}', f'{dado}', cinza)
         else:
@@ -197,11 +131,11 @@ class Excel():
 
 
         faz_coluna(columns)
-        faz_linha(self.nomes, 'a', 0)
-        faz_linha(self.links, 'b', 0)
-        faz_linha(self.telefones, 'c', 'telefone')
-        faz_linha(self.emails, 'd', 'email')
-        faz_linha(self.enderecos, 'e', 'endereco')
-        faz_linha(self.trabalhos, 'f', 'trabalho')
+        faz_linha(self.nomes, 'a', 0, self.nomes_g)
+        faz_linha(self.links, 'b', 0, self.linkss_g)
+        faz_linha(self.telefones, 'c','1', self.telefones_g)
+        faz_linha(self.emails, 'd','1', self.emails_g)
+        faz_linha(self.enderecos, 'e','1',self.enderecos_g)
+        faz_linha(self.trabalhos, 'f','1', self.trabalhos_g)
 
         workbook.close()
