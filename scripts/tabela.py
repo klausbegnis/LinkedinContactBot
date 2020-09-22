@@ -90,7 +90,7 @@ class Excel():
                     dado = dados[i]
                     compara = comparacao[i]
 
-                    if i == 0:
+                    if i == 0 or (i % 2) == 0:
                         if tipo != 0:
                             if dado == compara:
                                 worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
@@ -99,15 +99,6 @@ class Excel():
                         else:
                             worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
 
-                    if (i % 2) == 0:
-                        if i != 0:
-                            if tipo != 0:
-                                    if dado == compara:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
-                                    else:
-                                        worksheet.write(f'{letra_up}{i + 2}', f'{dado}', amarelo)
-                            else:
-                                worksheet.write(f'{letra_up}{i + 2}', f'{dado}', branco)
                     else:
                         if tipo != 0:
                                 if dado == compara:
