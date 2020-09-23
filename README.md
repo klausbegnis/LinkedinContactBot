@@ -9,7 +9,7 @@ Passo a passo:
       Adcionar no script em linkedinclass.py Linha 11 em self.driver = webdriver.Chrome(r"PATH DO EXECUTÁVEL")
 
 2) Download da credentials.json:
-      https://developers.google.com/sheets/api/quickstart/python?authuser=2 Fazer o primeiro passo descrito STEP 1 (Passo 1)
+      https://developers.google.com/sheets/api/quickstart/python Fazer o primeiro passo descrito STEP 1 (Passo 1)
       1 - Enable the Google Sheets API (clicar)
       2 - Coloque o nome do projeto (não interfere) - Next
       3 - Desktop App - Create
