@@ -8,7 +8,7 @@ class LinkedinBot():
     def __init__(self, user, password):
         self.username = user
         self.password = password
-        self.driver = webdriver.Chrome(r"C:\Program Files (x86)\chromedriver\chromedriver.exe")  # path do chromedriver.exe (baixar na mesma versão do navegador)
+        self.driver = webdriver.Chrome(r"")  # path do chromedriver.exe (baixar na mesma versão do navegador)
         self.driver.get("https://www.linkedin.com/home")  # LINK
         sleep(2)
         self.login()
