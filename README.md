@@ -2,6 +2,8 @@
 
 Descrição: Script de coleta de dados automatizado, via Linkedin, baseado em um banco de dados, que retorna uma tabela com informações atuais sinalizando possíveis diferenças.
 
+youtube: https://www.youtube.com/watch?v=h8bytJQUl_8&feature=youtu.be&ab_channel=KlausBegnis
+
 Passo a passo:
 
  1) Instalação do chromedriver ou algum driver de sua preferência:
